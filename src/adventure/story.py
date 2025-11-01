@@ -29,21 +29,14 @@ if __name__ == "__main__":
     # Intro panel
     console.print(Panel.fit(
         "[bold yellow]You wake up in a dark forest.[/bold yellow]\nYou can go [green]left[/green] or [cyan]right[/cyan].",
-        title="🌲 Adventure Begins 🌲",
+        title="Adventure Begins",
         border_style="bold magenta"
     ))
 
     while True:
         choice = Prompt.ask("\n[bold white]Which direction do you choose?[/bold white]", choices=["left", "right", "exit"])
         if choice == "exit":
-            # Rich-styled goodbye message
-            console.print(Panel.fit(
-                "[bold red]You decide to rest and end your journey.[/bold red]\n[bold green]Goodbye![/bold green]",
-                title="🌙 Farewell Traveler 🌙",
-                border_style="bold blue"
-            ))
-            
-            # Plain text for auto-test compatibility
+
             print("Goodbye!")
             break
         
