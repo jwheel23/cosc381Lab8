@@ -3,7 +3,6 @@ import random
 from rich.console import Console
 from rich.prompt import Prompt
 from rich.panel import Panel
-from rich.text import Text
 
 console = Console()
 
@@ -11,6 +10,7 @@ def step(choice: str, events):
     random_event = random.choice(events)
 
     if choice == "exit":
+        # Return a plain string for auto-tests
         return "Goodbye!"
     if choice == "left":
         return left_path(random_event)
@@ -36,7 +36,15 @@ if __name__ == "__main__":
     ))
 
     while True:
+        # Prompt for user choice
         choice = Prompt.ask("\n[bold white]Which direction do you choose?[/bold white]", choices=["left", "right", "exit"])
 
         result = step(choice, events)
-        console.print(result)
+
+        # Print Rich-styled output for normal paths
+        if choice in ["left", "right"]:
+            console.print(result)
+        # Print plain goodbye for exit so test captures it
+        elif choice == "exit":
+            print(result)  
+            break
