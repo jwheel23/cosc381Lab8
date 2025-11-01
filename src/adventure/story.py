@@ -10,6 +10,8 @@ console = Console()
 def step(choice: str, events):
     random_event = random.choice(events)
 
+    if choice == "exit":
+        return "Goodbye!"
     if choice == "left":
         return left_path(random_event)
     elif choice == "right":
@@ -35,10 +37,6 @@ if __name__ == "__main__":
 
     while True:
         choice = Prompt.ask("\n[bold white]Which direction do you choose?[/bold white]", choices=["left", "right", "exit"])
-        if choice == "exit":
 
-            print("Goodbye!")
-            break
-        
         result = step(choice, events)
         console.print(result)
