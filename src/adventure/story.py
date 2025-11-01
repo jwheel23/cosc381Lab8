@@ -36,7 +36,15 @@ if __name__ == "__main__":
     while True:
         choice = Prompt.ask("\n[bold white]Which direction do you choose?[/bold white]", choices=["left", "right", "exit"])
         if choice == "exit":
-            console.print("\n[bold red]You decide to rest and end your journey. Goodbye[/bold red]")
+            # Rich-styled goodbye message
+            console.print(Panel.fit(
+                "[bold red]You decide to rest and end your journey.[/bold red]\n[bold green]Goodbye![/bold green]",
+                title="🌙 Farewell Traveler 🌙",
+                border_style="bold blue"
+            ))
+            
+            # Plain text for auto-test compatibility
+            print("Goodbye!")
             break
         
         result = step(choice, events)
